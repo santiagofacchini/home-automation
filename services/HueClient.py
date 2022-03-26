@@ -21,7 +21,8 @@ class Light:
                 "bri": 254,
             },
         )
-        print(f'{datetime.datetime.now()} => Turning light {self.light} on. {response}')
+        print(f'{datetime.datetime.now()} => Turning light {self.light} on. '
+        f'{response}')
         return response.content
 
     def turn_off(self):
@@ -31,7 +32,8 @@ class Light:
                 "on": False,
             },
         )
-        print(f'{datetime.datetime.now()} => Turning light {self.light} off. {response}')
+        print(f'{datetime.datetime.now()} => Turning light {self.light} '
+            f'off. {response}')
         return response.content
 
     def flip_state(self):
@@ -48,5 +50,6 @@ class Light:
                 "on": new_state,
             },
         )
-        print(f'{datetime.datetime.now()} => Flipping light {self.light} state. {response}')
+        print(f'{datetime.datetime.now()} => Flipping light {self.light} '
+            f'state. {response}')
         return response.content

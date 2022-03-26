@@ -33,7 +33,8 @@ class Switch:
                 }
             },
         )
-        print(f'{datetime.datetime.now()} => Turning switch at {self.sonoff_ip} on. {response}')
+        print(f'{datetime.datetime.now()} => Turning switch at '
+            f'{self.sonoff_ip} on. {response}')
         return response.content
 
     def turn_off(self):
@@ -45,7 +46,8 @@ class Switch:
                 }
             },
         )
-        print(f'{datetime.datetime.now()} => Turning switch at {self.sonoff_ip} off. {response}')
+        print(f'{datetime.datetime.now()} => Turning switch at '
+            f'{self.sonoff_ip} off. {response}')
         return response.content
 
     def inching_on(self, time:int):
@@ -59,7 +61,8 @@ class Switch:
                 }
             },
         )
-        print(f'{datetime.datetime.now()} => Inching set to {miliseconds}. {response}')
+        print(f'{datetime.datetime.now()} => Inching set to '
+            f'{miliseconds}. {response}')
         return response.content
 
     def inching_off(self):
