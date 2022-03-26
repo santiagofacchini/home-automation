@@ -25,5 +25,6 @@ sprinklers = Switch(
     sonoff_port=sprinklers_port,
 )
 
-if today.rain_forecast():
+days = 1
+if today.rain_forecast(days):
     sprinklers.turn_on()
