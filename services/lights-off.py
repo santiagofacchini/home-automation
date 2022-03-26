@@ -4,6 +4,7 @@ import os
 from HueClient import Light
 
 
+# Hue client
 hue_user = os.environ['HUE_USER']
 hue_ip = os.environ['HUE_IP']
 
