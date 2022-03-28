@@ -37,7 +37,7 @@ class Light:
         return response.content
 
     def flip_state(self):
-        requests.get(
+        response = requests.get(
             url=f'http://{self.hue_ip}/api/{self.hue_user}/lights/{self.light}'
         )
         if response.json()['state']['on'] == False:
@@ -51,5 +51,5 @@ class Light:
             },
         )
         print(f'{datetime.datetime.now()} => Flipping light {self.light} '
-            f'state. {response}')
+            f'state. Light on: {new_state}. {response}')
         return response.content
