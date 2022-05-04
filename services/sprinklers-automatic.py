@@ -1,9 +1,11 @@
-#!/usr/bin/python3
-
 import os
 from WeatherClient import Weather
 from SonoffClient import Switch
+from dotenv import load_dotenv
 
+
+# Load environment variables from .env file (must be in ~)
+load_dotenv(f'{os.environ["HOME"]}/.env')
 
 # Weather API
 api_key = os.environ['API_KEY']

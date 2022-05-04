@@ -1,8 +1,10 @@
-#!/usr/bin/python3
-
 import os
 from HueClient import Light
+from dotenv import load_dotenv
 
+
+# Load environment variables from .env file (must be in ~)
+load_dotenv(f'{os.environ["HOME"]}/.env')
 
 # Hue client
 hue_user = os.environ['HUE_USER']
