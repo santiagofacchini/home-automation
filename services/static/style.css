@@ -1,0 +1,33 @@
+.main {
+    padding: 10%;
+    background-color: #18191c;
+    color: #e2e4e9
+}
+
+.casa {
+    font-family: "Roboto", sans-serif;
+    font-weight: bolder;
+    text-align: center;
+    font-size: x-large;
+    padding: 10%;
+
+}
+
+div.botones {
+    display: flex;
+}
+
+a.boton {
+    text-decoration: none;
+    margin: auto;
+    padding-bottom: 10%;
+    color: #898d95;
+}
+
+p.on-off {
+    font-family: "Roboto", sans-serif;
+    font-weight: bolder;
+    text-align: center;
+    font-size: large;
+    padding: 10%;
+}
