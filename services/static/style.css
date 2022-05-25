@@ -15,6 +15,7 @@
 
 div.botones {
     display: flex;
+    justify-items: center;
 }
 
 a.boton {
@@ -28,6 +29,6 @@ p.on-off {
     font-family: "Roboto", sans-serif;
     font-weight: bolder;
     text-align: center;
-    font-size: large;
-    padding: 10%;
+    font-size: medium;
+    padding: 5%;
 }

@@ -33,60 +33,36 @@ def all_on():
     dormitorio.turn_on()
     return render_template('main.html')
 
-@app.route("/lights/all/off")
-def all_off():
+@app.route("/lights/all")
+def flip_all():
     comedor = Light(hue_user, hue_ip, 1)
     sala_de_estar = Light(hue_user, hue_ip, 4)
     dormitorio = Light(hue_user, hue_ip, 3)
-    comedor.turn_off()
-    sala_de_estar.turn_off()
-    dormitorio.turn_off()
+    comedor.flip_state()
+    sala_de_estar.flip_state()
+    dormitorio.flip_state()
     return render_template('main.html')
 
-@app.route("/lights/comedor/on")
-def comedor_on():
+@app.route("/lights/comedor")
+def comedor():
     comedor = Light(hue_user, hue_ip, 1)
-    comedor.turn_on()
+    comedor.flip_state()
     return render_template('main.html')
 
-@app.route("/lights/comedor/off")
-def comedor_off():
-    comedor = Light(hue_user, hue_ip, 1)
-    comedor.turn_off()
-    return render_template('main.html')
-
-@app.route("/lights/sala-de-estar/on")
-def sala_de_estar_on():
+@app.route("/lights/sala-de-estar")
+def sala_de_estar():
     sala_de_estar = Light(hue_user, hue_ip, 4)
-    sala_de_estar.turn_on()
+    sala_de_estar.flip_state()
     return render_template('main.html')
 
-@app.route("/lights/sala-de-estar/off")
-def sala_de_estar_off():
-    sala_de_estar = Light(hue_user, hue_ip, 4)
-    sala_de_estar.turn_off()
-    return render_template('main.html')
-
-@app.route("/lights/dormitorio/on")
-def dormitorio_on():
+@app.route("/lights/dormitorio")
+def dormitorio():
     dormitorio = Light(hue_user, hue_ip, 3)
-    dormitorio.turn_on()
+    dormitorio.flip_state()
     return render_template('main.html')
 
-@app.route("/lights/dormitorio/off")
-def dormitorio_off():
-    dormitorio = Light(hue_user, hue_ip, 3)
-    dormitorio.turn_off()
-    return render_template('main.html')
-
-@app.route("/sprinklers/on")
-def sprinklers_on():
+@app.route("/sprinklers")
+def sprinklers():
     sprinklers = Switch(sprinklers_ip, sprinklers_port)
-    sprinklers.turn_on()
-    return render_template('main.html')
-
-@app.route("/sprinklers/off")
-def sprinklers_off():
-    sprinklers = Switch(sprinklers_ip, sprinklers_port)
-    sprinklers.turn_off()
+    sprinklers.switch_state()
     return render_template('main.html')
