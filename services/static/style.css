@@ -1,27 +1,26 @@
 .main {
-    padding: 10%;
     background-color: #18191c;
-    color: #e2e4e9
+    color: #e2e4e9;
+    padding-left: 3%;
+    padding-right: 3%;
 }
 
 .casa {
+    padding-top: 15%;
+    padding-bottom: 15%;
     font-family: "Roboto", sans-serif;
     font-weight: bolder;
     text-align: center;
     font-size: x-large;
-    padding: 10%;
-
 }
 
 div.botones {
     display: flex;
-    justify-items: center;
 }
 
 a.boton {
     text-decoration: none;
     margin: auto;
-    padding-bottom: 10%;
     color: #898d95;
 }
 
