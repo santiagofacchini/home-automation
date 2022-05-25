@@ -66,3 +66,6 @@ def sprinklers():
     sprinklers = Switch(sprinklers_ip, sprinklers_port)
     sprinklers.switch_state()
     return render_template('main.html')
+
+# if __name__ == "__main__":
+#     app.run(debug=True, host='0.0.0.0', port=4000, load_dotenv=True)
