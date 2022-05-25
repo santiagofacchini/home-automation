@@ -23,7 +23,7 @@ app = Flask(__name__)
 def main():
     return render_template('main.html')
 
-@app.route("/lights/all/on")
+@app.route("/lights/all-on")
 def all_on():
     comedor = Light(hue_user, hue_ip, 1)
     sala_de_estar = Light(hue_user, hue_ip, 4)
@@ -33,14 +33,14 @@ def all_on():
     dormitorio.turn_on()
     return render_template('main.html')
 
-@app.route("/lights/all")
-def flip_all():
+@app.route("/lights/all-off")
+def all_off():
     comedor = Light(hue_user, hue_ip, 1)
     sala_de_estar = Light(hue_user, hue_ip, 4)
     dormitorio = Light(hue_user, hue_ip, 3)
-    comedor.flip_state()
-    sala_de_estar.flip_state()
-    dormitorio.flip_state()
+    comedor.turn_off()
+    sala_de_estar.turn_off()
+    dormitorio.turn_off()
     return render_template('main.html')
 
 @app.route("/lights/comedor")
@@ -67,5 +67,5 @@ def sprinklers():
     sprinklers.switch_state()
     return render_template('main.html')
 
-# if __name__ == "__main__":
-#     app.run(debug=True, host='0.0.0.0', port=4000, load_dotenv=True)
+if __name__ == "__main__":
+    app.run(debug=True, host='0.0.0.0', port=4000, load_dotenv=True)

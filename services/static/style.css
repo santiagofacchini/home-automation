@@ -18,6 +18,15 @@ div.botones {
     display: flex;
 }
 
+div.boton1 {
+    margin: auto;
+    color: #898d95;
+}
+
+a {
+    text-decoration: none;
+}
+
 a.boton {
     text-decoration: none;
     margin: auto;
