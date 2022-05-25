@@ -74,3 +74,10 @@ class Switch:
         )
         print(f'{datetime.datetime.now()} => Inching off. {response}')
         return response.content
+
+    def switch_state(self):
+        state = self.get_info()
+        if '"switch":"off"' in state.decode():
+            self.turn_on()
+        else:
+            self.turn_off()
