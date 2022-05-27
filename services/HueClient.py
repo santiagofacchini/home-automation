@@ -11,6 +11,12 @@ class Light:
         self.hue_ip = hue_ip
         self.light = light
 
+    def get_state(self):
+        response = requests.get(
+            url=f'http://{self.hue_ip}/api/{self.hue_user}/lights/{self.light}'
+        )
+        return response.json()['state']['on']
+
     def turn_on(self):
         response = requests.put(
             url=f'http://{self.hue_ip}/api/{self.hue_user}/lights/{self.light}/state',

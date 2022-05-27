@@ -23,9 +23,28 @@
     <br>
     <p class="on-off">Dispositivos</p>
     <div class="botones">
-        <a type="button" class="boton material-symbols-outlined" href="/lights/sala-de-estar">chair</a>
-        <a type="button" class="boton material-symbols-outlined" href="/lights/comedor">flatware</a>
-        <a type="button" class="boton material-symbols-outlined" href="/lights/dormitorio">bed</a>
+        <!-- sala de estar -->
+        {% if sala_de_estar_state == True %}
+            <a type="button" style="color:#f4af36" class="boton material-symbols-outlined" href="/lights/sala-de-estar">chair</a>
+        {% else %}
+            <a type="button" class="boton material-symbols-outlined" href="/lights/sala-de-estar">chair</a>
+        {% endif %}
+
+        <!-- comedor -->
+        {% if comedor_state == True %}
+            <a type="button" style="color:#f4af36" class="boton material-symbols-outlined" href="/lights/comedor">flatware</a>
+        {% else %}
+            <a type="button" class="boton material-symbols-outlined" href="/lights/comedor">flatware</a>
+        {% endif %}
+
+        <!-- dormitorio -->
+        {% if dormitorio_state == True %}
+            <a type="button" style="color:#f4af36" class="boton material-symbols-outlined" href="/lights/dormitorio">bed</a>
+        {% else %}
+            <a type="button" class="boton material-symbols-outlined" href="/lights/dormitorio">bed</a>
+        {% endif %}
+        
+        <!-- aspersores -->
         <a type="button" class="boton material-symbols-outlined" href="/sprinklers">sprinkler</a>
     </div>
 </body>

@@ -21,7 +21,13 @@ app = Flask(__name__)
 
 @app.route('/')
 def main():
-    return render_template('main.html')
+    comedor = Light(hue_user, hue_ip, 1)
+    sala_de_estar = Light(hue_user, hue_ip, 4)
+    dormitorio = Light(hue_user, hue_ip, 3)
+    comedor_state = comedor.get_state()
+    sala_de_estar_state = sala_de_estar.get_state()
+    dormitorio_state = dormitorio.get_state()
+    return render_template('main.html', comedor_state=comedor_state, sala_de_estar_state=sala_de_estar_state, dormitorio_state=dormitorio_state)
 
 @app.route("/lights/all-on")
 def all_on():
@@ -31,7 +37,10 @@ def all_on():
     comedor.turn_on()
     sala_de_estar.turn_on()
     dormitorio.turn_on()
-    return render_template('main.html')
+    comedor_state = comedor.get_state()
+    sala_de_estar_state = sala_de_estar.get_state()
+    dormitorio_state = dormitorio.get_state()
+    return render_template('main.html', comedor_state=comedor_state, sala_de_estar_state=sala_de_estar_state, dormitorio_state=dormitorio_state)
 
 @app.route("/lights/all-off")
 def all_off():
@@ -41,25 +50,43 @@ def all_off():
     comedor.turn_off()
     sala_de_estar.turn_off()
     dormitorio.turn_off()
-    return render_template('main.html')
+    comedor_state = comedor.get_state()
+    sala_de_estar_state = sala_de_estar.get_state()
+    dormitorio_state = dormitorio.get_state()
+    return render_template('main.html', comedor_state=comedor_state, sala_de_estar_state=sala_de_estar_state, dormitorio_state=dormitorio_state)
 
 @app.route("/lights/comedor")
 def comedor():
     comedor = Light(hue_user, hue_ip, 1)
+    sala_de_estar = Light(hue_user, hue_ip, 4)
+    dormitorio = Light(hue_user, hue_ip, 3)
     comedor.flip_state()
-    return render_template('main.html')
+    comedor_state = comedor.get_state()
+    sala_de_estar_state = sala_de_estar.get_state()
+    dormitorio_state = dormitorio.get_state()
+    return render_template('main.html', comedor_state=comedor_state, sala_de_estar_state=sala_de_estar_state, dormitorio_state=dormitorio_state)
 
 @app.route("/lights/sala-de-estar")
 def sala_de_estar():
+    comedor = Light(hue_user, hue_ip, 1)
     sala_de_estar = Light(hue_user, hue_ip, 4)
+    dormitorio = Light(hue_user, hue_ip, 3)
     sala_de_estar.flip_state()
-    return render_template('main.html')
+    comedor_state = comedor.get_state()
+    sala_de_estar_state = sala_de_estar.get_state()
+    dormitorio_state = dormitorio.get_state()
+    return render_template('main.html', comedor_state=comedor_state, sala_de_estar_state=sala_de_estar_state, dormitorio_state=dormitorio_state)
 
 @app.route("/lights/dormitorio")
 def dormitorio():
+    comedor = Light(hue_user, hue_ip, 1)
+    sala_de_estar = Light(hue_user, hue_ip, 4)
     dormitorio = Light(hue_user, hue_ip, 3)
     dormitorio.flip_state()
-    return render_template('main.html')
+    comedor_state = comedor.get_state()
+    sala_de_estar_state = sala_de_estar.get_state()
+    dormitorio_state = dormitorio.get_state()
+    return render_template('main.html', comedor_state=comedor_state, sala_de_estar_state=sala_de_estar_state, dormitorio_state=dormitorio_state)
 
 @app.route("/sprinklers")
 def sprinklers():
