@@ -23,7 +23,7 @@ div.boton1 {
     color: #898d95;
 }
 
-a {
+a:hover, a:focus, a:active {
     text-decoration: none;
 }
 

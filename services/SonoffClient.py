@@ -19,8 +19,7 @@ class Switch:
                 "data": {}
             },
         )
-        print(response.json())
-        return response.content
+        return response.json()
 
     def turn_on(self):
         response = requests.post(
@@ -33,7 +32,7 @@ class Switch:
         )
         print(f'{datetime.datetime.now()} => Turning switch at '
             f'{self.sonoff_ip} on. {response}')
-        return response.content
+        return response.json()
 
     def turn_off(self):
         response = requests.post(
@@ -46,7 +45,7 @@ class Switch:
         )
         print(f'{datetime.datetime.now()} => Turning switch at '
             f'{self.sonoff_ip} off. {response}')
-        return response.content
+        return response.json()
 
     def inching_on(self, time:int):
         miliseconds = time*60000
@@ -61,7 +60,7 @@ class Switch:
         )
         print(f'{datetime.datetime.now()} => Inching set to '
             f'{miliseconds}. {response}')
-        return response.content
+        return response.json()
 
     def inching_off(self):
         response = requests.post(
@@ -73,11 +72,12 @@ class Switch:
             },
         )
         print(f'{datetime.datetime.now()} => Inching off. {response}')
-        return response.content
+        return response.json()
 
     def switch_state(self):
-        state = self.get_info()
-        if '"switch":"off"' in state.decode():
+        sprinklers_state = self.get_info()
+        if sprinklers_state['data']['switch'] == 'off':
             self.turn_on()
         else:
             self.turn_off()
+        return self.get_info()

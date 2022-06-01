@@ -27,7 +27,9 @@ def main():
     comedor_state = comedor.get_state()
     sala_de_estar_state = sala_de_estar.get_state()
     dormitorio_state = dormitorio.get_state()
-    return render_template('main.html', comedor_state=comedor_state, sala_de_estar_state=sala_de_estar_state, dormitorio_state=dormitorio_state)
+    sprinklers = Switch(sprinklers_ip, sprinklers_port)
+    sprinklers_state = sprinklers.get_info()
+    return render_template('main.html', comedor_state=comedor_state, sala_de_estar_state=sala_de_estar_state, dormitorio_state=dormitorio_state, sprinklers_state=sprinklers_state)
 
 @app.route("/lights/all-on")
 def all_on():
@@ -40,7 +42,9 @@ def all_on():
     comedor_state = comedor.get_state()
     sala_de_estar_state = sala_de_estar.get_state()
     dormitorio_state = dormitorio.get_state()
-    return render_template('main.html', comedor_state=comedor_state, sala_de_estar_state=sala_de_estar_state, dormitorio_state=dormitorio_state)
+    sprinklers = Switch(sprinklers_ip, sprinklers_port)
+    sprinklers_state = sprinklers.get_info()
+    return render_template('main.html', comedor_state=comedor_state, sala_de_estar_state=sala_de_estar_state, dormitorio_state=dormitorio_state, sprinklers_state=sprinklers_state)
 
 @app.route("/lights/all-off")
 def all_off():
@@ -53,7 +57,9 @@ def all_off():
     comedor_state = comedor.get_state()
     sala_de_estar_state = sala_de_estar.get_state()
     dormitorio_state = dormitorio.get_state()
-    return render_template('main.html', comedor_state=comedor_state, sala_de_estar_state=sala_de_estar_state, dormitorio_state=dormitorio_state)
+    sprinklers = Switch(sprinklers_ip, sprinklers_port)
+    sprinklers_state = sprinklers.get_info()
+    return render_template('main.html', comedor_state=comedor_state, sala_de_estar_state=sala_de_estar_state, dormitorio_state=dormitorio_state, sprinklers_state=sprinklers_state)
 
 @app.route("/lights/comedor")
 def comedor():
@@ -64,7 +70,9 @@ def comedor():
     comedor_state = comedor.get_state()
     sala_de_estar_state = sala_de_estar.get_state()
     dormitorio_state = dormitorio.get_state()
-    return render_template('main.html', comedor_state=comedor_state, sala_de_estar_state=sala_de_estar_state, dormitorio_state=dormitorio_state)
+    sprinklers = Switch(sprinklers_ip, sprinklers_port)
+    sprinklers_state = sprinklers.get_info()
+    return render_template('main.html', comedor_state=comedor_state, sala_de_estar_state=sala_de_estar_state, dormitorio_state=dormitorio_state, sprinklers_state=sprinklers_state)
 
 @app.route("/lights/sala-de-estar")
 def sala_de_estar():
@@ -75,7 +83,9 @@ def sala_de_estar():
     comedor_state = comedor.get_state()
     sala_de_estar_state = sala_de_estar.get_state()
     dormitorio_state = dormitorio.get_state()
-    return render_template('main.html', comedor_state=comedor_state, sala_de_estar_state=sala_de_estar_state, dormitorio_state=dormitorio_state)
+    sprinklers = Switch(sprinklers_ip, sprinklers_port)
+    sprinklers_state = sprinklers.get_info()
+    return render_template('main.html', comedor_state=comedor_state, sala_de_estar_state=sala_de_estar_state, dormitorio_state=dormitorio_state, sprinklers_state=sprinklers_state)
 
 @app.route("/lights/dormitorio")
 def dormitorio():
@@ -86,13 +96,22 @@ def dormitorio():
     comedor_state = comedor.get_state()
     sala_de_estar_state = sala_de_estar.get_state()
     dormitorio_state = dormitorio.get_state()
-    return render_template('main.html', comedor_state=comedor_state, sala_de_estar_state=sala_de_estar_state, dormitorio_state=dormitorio_state)
+    sprinklers = Switch(sprinklers_ip, sprinklers_port)
+    sprinklers_state = sprinklers.get_info()
+    return render_template('main.html', comedor_state=comedor_state, sala_de_estar_state=sala_de_estar_state, dormitorio_state=dormitorio_state, sprinklers_state=sprinklers_state)
 
 @app.route("/sprinklers")
 def sprinklers():
     sprinklers = Switch(sprinklers_ip, sprinklers_port)
     sprinklers.switch_state()
-    return render_template('main.html')
+    sprinklers_state = sprinklers.get_info()
+    comedor = Light(hue_user, hue_ip, 1)
+    sala_de_estar = Light(hue_user, hue_ip, 4)
+    dormitorio = Light(hue_user, hue_ip, 3)
+    comedor_state = comedor.get_state()
+    sala_de_estar_state = sala_de_estar.get_state()
+    dormitorio_state = dormitorio.get_state()
+    return render_template('main.html', comedor_state=comedor_state, sala_de_estar_state=sala_de_estar_state, dormitorio_state=dormitorio_state, sprinklers_state=sprinklers_state)
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0', port=4000, load_dotenv=True)
