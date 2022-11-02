@@ -1,0 +1,42 @@
+.main {
+    background-color: #18191c;
+    color: #e2e4e9;
+    padding-left: 3%;
+    padding-right: 3%;
+}
+
+.casa {
+    padding-top: 15%;
+    padding-bottom: 15%;
+    font-family: "Roboto", sans-serif;
+    font-weight: bolder;
+    text-align: center;
+    font-size: x-large;
+}
+
+div.botones {
+    display: flex;
+}
+
+div.boton1 {
+    margin: auto;
+    color: #898d95;
+}
+
+a:hover, a:focus, a:active {
+    text-decoration: none;
+}
+
+a.boton {
+    text-decoration: none;
+    margin: auto;
+    color: #898d95;
+}
+
+p.on-off {
+    font-family: "Roboto", sans-serif;
+    font-weight: bolder;
+    text-align: center;
+    font-size: medium;
+    padding: 5%;
+}
