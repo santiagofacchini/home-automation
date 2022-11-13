@@ -3,11 +3,7 @@ from flask import Flask
 from flask import render_template
 from HueClient import Light
 from SonoffClient import Switch
-from dotenv import load_dotenv
 
-
-# Load environment variables from .env file (must be in ~)
-load_dotenv(f'{os.environ["HOME"]}/.env')
 
 # Hue client
 hue_user = os.environ['HUE_USER']
@@ -114,4 +110,4 @@ def sprinklers():
     return render_template('main.html', comedor_state=comedor_state, sala_de_estar_state=sala_de_estar_state, dormitorio_state=dormitorio_state, sprinklers_state=sprinklers_state)
 
 if __name__ == "__main__":
-    app.run(debug=True, host='0.0.0.0', port=4000, load_dotenv=True)
+    app.run(debug=True, host='0.0.0.0', port=4000)

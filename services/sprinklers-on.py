@@ -1,10 +1,6 @@
 import os
 from SonoffClient import Switch
-from dotenv import load_dotenv
 
-
-# Load environment variables from .env file (must be in ~)
-load_dotenv(f'{os.environ["HOME"]}/.env')
 
 # Sprinklers
 sprinklers_ip = os.environ['SPRINKLERS_IP']
