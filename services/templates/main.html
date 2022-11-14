@@ -47,8 +47,10 @@
         <!-- aspersores -->
         {% if sprinklers_state['data']['switch'] == 'on' %}
             <a type="button" style="color:#f4af36" class="boton material-symbols-outlined" href="/sprinklers">sprinkler</a>
-        {% else %}
+        {% elif sprinklers_state['data']['switch'] == 'off' %}
             <a type="button" class="boton material-symbols-outlined" href="/sprinklers">sprinkler</a>
+        {% else %}
+            <a type="button" style="color:#ea4335" class="boton material-symbols-outlined" href="/sprinklers">sprinkler</a>
         {% endif %}
     </div>
 </body>
