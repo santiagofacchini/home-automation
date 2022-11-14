@@ -4,7 +4,7 @@ from SonoffClient import Switch
 
 
 # Weather API
-api_key = os.environ['API_KEY']
+api_key = os.environ['WEATHER_API_KEY']
 latitude = os.environ['LATITUDE']
 longitude = os.environ['LONGITUDE']
 
