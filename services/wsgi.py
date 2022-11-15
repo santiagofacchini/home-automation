@@ -96,10 +96,23 @@ def dormitorio():
     sprinklers_state = sprinklers.get_info()
     return render_template('main.html', comedor_state=comedor_state, sala_de_estar_state=sala_de_estar_state, dormitorio_state=dormitorio_state, sprinklers_state=sprinklers_state)
 
-@app.route("/sprinklers")
+@app.route("/sprinklers/on")
 def sprinklers():
     sprinklers = Switch(sprinklers_ip, sprinklers_port)
-    sprinklers.switch_state()
+    sprinklers.turn_on()
+    sprinklers_state = sprinklers.get_info()
+    comedor = Light(hue_user, hue_ip, 1)
+    sala_de_estar = Light(hue_user, hue_ip, 4)
+    dormitorio = Light(hue_user, hue_ip, 3)
+    comedor_state = comedor.get_state()
+    sala_de_estar_state = sala_de_estar.get_state()
+    dormitorio_state = dormitorio.get_state()
+    return render_template('main.html', comedor_state=comedor_state, sala_de_estar_state=sala_de_estar_state, dormitorio_state=dormitorio_state, sprinklers_state=sprinklers_state)
+
+@app.route("/sprinklers/off")
+def sprinklers():
+    sprinklers = Switch(sprinklers_ip, sprinklers_port)
+    sprinklers.turn_off()
     sprinklers_state = sprinklers.get_info()
     comedor = Light(hue_user, hue_ip, 1)
     sala_de_estar = Light(hue_user, hue_ip, 4)

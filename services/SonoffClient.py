@@ -75,7 +75,7 @@ class Switch:
         print(f'{datetime.datetime.now()} => Inching off. {response}')
         return response.json()
 
-    def switch_state(self):
+    def flip_state(self):
         sprinklers_state = self.get_info()
         if sprinklers_state['data']['switch'] == 'off':
             self.turn_on()
