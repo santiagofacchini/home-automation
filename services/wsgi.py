@@ -3,6 +3,7 @@ from flask import Flask
 from flask import render_template
 from HueClient import Light
 from SonoffClient import Switch
+from WeatherClient import Weather
 
 
 # Hue client
@@ -11,7 +12,14 @@ hue_ip = os.environ['HUE_IP']
 
 # Sprinklers
 sprinklers_ip = os.environ['SPRINKLERS_IP']
-sprinklers_port = os.environ['SPRINKLERS_PORT'] 
+sprinklers_port = os.environ['SPRINKLERS_PORT']
+
+# Weather API
+today = Weather(
+    api_key=os.environ['WEATHER_API_KEY'],
+    latitude=os.environ['LATITUDE'],
+    longitude=os.environ['LONGITUDE'],
+)
 
 app = Flask(__name__)
 
@@ -121,6 +129,13 @@ def sprinklers_off():
     sala_de_estar_state = sala_de_estar.get_state()
     dormitorio_state = dormitorio.get_state()
     return render_template('main.html', comedor_state=comedor_state, sala_de_estar_state=sala_de_estar_state, dormitorio_state=dormitorio_state, sprinklers_state=sprinklers_state)
+
+@app.route("/sprinklers/automatic")
+def sprinklers_automatic():
+    sprinklers = Switch(sprinklers_ip, sprinklers_port)
+    days = 1
+    if today.rain_forecast(days):
+        sprinklers.turn_on()
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0', port=4000)
