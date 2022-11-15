@@ -136,6 +136,14 @@ def sprinklers_automatic():
     days = 1
     if today.rain_forecast(days):
         sprinklers.turn_on()
+    sprinklers_state = sprinklers.get_info()
+    comedor = Light(hue_user, hue_ip, 1)
+    sala_de_estar = Light(hue_user, hue_ip, 4)
+    dormitorio = Light(hue_user, hue_ip, 3)
+    comedor_state = comedor.get_state()
+    sala_de_estar_state = sala_de_estar.get_state()
+    dormitorio_state = dormitorio.get_state()
+    return render_template('main.html', comedor_state=comedor_state, sala_de_estar_state=sala_de_estar_state, dormitorio_state=dormitorio_state, sprinklers_state=sprinklers_state)
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0', port=4000)
