@@ -3,12 +3,12 @@ services:
     build: .
     container_name: 'home-automation'
     ports:
-      - ${HOME_AUTOMATION_PORT}:4000
+      - 80:4000
     environment:
-      - HUE_IP=${}
-      - HUE_USER=${}
-      - SPRINKLERS_IP=${}
-      - SPRINKLERS_PORT=${}
-      - WEATHER_API_KEY=${}
-      - LATITUDE=${}
-      - LONGITUDE=${}
+      - HUE_IP=
+      - HUE_USER=
+      - SPRINKLERS_IP=
+      - SPRINKLERS_PORT=
+      - WEATHER_API_KEY=
+      - LATITUDE=
+      - LONGITUDE=
