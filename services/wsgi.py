@@ -1,10 +1,68 @@
 import os
-from flask import Flask
-from flask import render_template
+import shelve
+from flask import Flask, render_template
 from HueClient import Light
 from SonoffClient import Switch
 from WeatherClient import Weather
+from flask_restful import Resource, Api, reqparse
 
+
+app = Flask(__name__)
+api = Api(app)
+
+# API
+class Devices(Resource):
+    def get(self):
+        db = shelve.open('devices')
+
+        devices = []
+        for device in db:
+            devices.append(device)
+
+        db.close()
+
+        return {"devices": devices}, 200
+
+    def post(self):
+        parser = reqparse.RequestParser()
+
+        parser.add_argument('identifier', required=True)
+        parser.add_argument('name', required=True)
+        parser.add_argument('device_type', required=True)
+        parser.add_argument('controller_gateway', required=True)
+        parser.add_argument('controller_port')
+        parser.add_argument('hue_user')
+        args = parser.parse_args()
+
+        if args['device_type'] == 'light':
+            args['endpoint'] = f''
+
+        db = shelve.open('devices')
+        db[args['identifier']] = args
+        db.close()
+
+        return {'message': 'Device registered', 'data': args}, 201
+
+class Device(Resource):
+    def get(self, identifier):
+        db = shelve.open('devices')
+        device = db[identifier]
+        db.close()
+
+        return {"data": device}, 200
+
+    def delete(self, identifier):
+        db = shelve.open('devices')
+
+        if not (identifier in db):
+            return {'message': 'Device not found', 'data': {}}, 404
+
+        del db[identifier]
+
+        return '', 204
+
+api.add_resource(Devices, '/devices')
+api.add_resource(Device, '/device/<string:identifier>')
 
 # Hue client
 hue_user = os.environ['HUE_USER']
@@ -20,8 +78,6 @@ today = Weather(
     latitude=os.environ['LATITUDE'],
     longitude=os.environ['LONGITUDE'],
 )
-
-app = Flask(__name__)
 
 @app.route('/')
 def main():
