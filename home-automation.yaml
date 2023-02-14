@@ -5,6 +5,7 @@ services:
     ports:
       - ${PORT}:${PORT}
     environment:
+      - PORT=${PORT}
       - HUE_IP=${HUE_IP}
       - HUE_USER=${HUE_USER}
       - SPRINKLERS_IP=${SPRINKLERS_IP}
