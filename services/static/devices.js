@@ -4,9 +4,9 @@ const hue_user = 'YtR6H-GYX4YCGbqAD3bpzOu-lF5tYFMInpl114sa'
 const sala_id = '5'
 const comedor_id = '1'
 const dormitorio_id = '3'
-const sala_endpoint = 'http://localhost:4003/lights/sala-de-estar'
-const comedor_endpoint = 'http://localhost:4003/lights/comedor'
-const dormitorio_endpoint = 'http://localhost:4003/lights/dormitorio'
+const sala_endpoint = 'http://192.168.88.109:4000/lights/sala-de-estar'
+const comedor_endpoint = 'http://192.168.88.109:4000/lights/comedor'
+const dormitorio_endpoint = 'http://192.168.88.109:4000/lights/dormitorio'
 
 function sala() {
     fetch('http://' + hue_ip + '/api/' + hue_user + '/lights/' + sala_id)
