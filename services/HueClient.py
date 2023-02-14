@@ -6,7 +6,7 @@ class Light:
     '''Used to interact with Philips Hue bridge API.
     '''
 
-    def __init__(self, hue_user: str, hue_ip: str, light: int) -> None:
+    def __init__(self, hue_user: str, hue_ip: str, light: int):
         self.hue_user = hue_user
         self.hue_ip = hue_ip
         self.light = light

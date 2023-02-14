@@ -34,7 +34,7 @@ class Weather:
         )
         data_dict = json.loads(response.content)
         total_rain = 0
-        desired_rain = 25
+        desired_rain = 20
         try:
             for mmh in data_dict['hours']:
                 total_rain += mmh['precipitation']['noaa']

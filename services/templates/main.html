@@ -23,35 +23,18 @@
     <br>
     <p class="on-off">Dispositivos</p>
     <div class="botones">
+        <!-- TODO: set icon color to style="color:#f4af36" when device is on -->
         <!-- sala de estar -->
-        {% if sala_de_estar_state == True %}
-            <a type="button" style="color:#f4af36" class="boton material-symbols-outlined" href="/lights/sala-de-estar">chair</a>
-        {% else %}
-            <a type="button" class="boton material-symbols-outlined" href="/lights/sala-de-estar">chair</a>
-        {% endif %}
+        <a type="button" class="boton material-symbols-outlined" href="/lights/sala-de-estar">chair</a>
 
         <!-- comedor -->
-        {% if comedor_state == True %}
-            <a type="button" style="color:#f4af36" class="boton material-symbols-outlined" href="/lights/comedor">flatware</a>
-        {% else %}
-            <a type="button" class="boton material-symbols-outlined" href="/lights/comedor">flatware</a>
-        {% endif %}
+        <a type="button" class="boton material-symbols-outlined" href="/lights/comedor">flatware</a>
 
         <!-- dormitorio -->
-        {% if dormitorio_state == True %}
-            <a type="button" style="color:#f4af36" class="boton material-symbols-outlined" href="/lights/dormitorio">bed</a>
-        {% else %}
-            <a type="button" class="boton material-symbols-outlined" href="/lights/dormitorio">bed</a>
-        {% endif %}
-
+        <a type="button" class="boton material-symbols-outlined" href="/lights/dormitorio">bed</a>
+    
         <!-- aspersores -->
-        {% if sprinklers_state['data']['switch'] == 'on' %}
-            <a type="button" style="color:#f4af36" class="boton material-symbols-outlined" href="/sprinklers/off">sprinkler</a>
-        {% elif sprinklers_state['data']['switch'] == 'off' %}
-            <a type="button" class="boton material-symbols-outlined" href="/sprinklers/on">sprinkler</a>
-        {% else %}
-            <a type="button" style="color:#ea4335" class="boton material-symbols-outlined" href="/">sprinkler</a>
-        {% endif %}
+        <a type="button" class="boton material-symbols-outlined" href="/sprinklers">sprinkler</a>
     </div>
 </body>
 </html>

@@ -7,4 +7,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-CMD [ "python", "./services/wsgi.py" ]
+CMD [ "python", "./services/run.py" ]
