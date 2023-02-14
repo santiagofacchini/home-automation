@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="icon" class="material-symbols-outlined" href="../static/icon.png">
+    <script type="text/javascript" src="../static/devices.js"></script>
     <title>Home Automation</title>
 </head>
 <body class="main">
@@ -16,25 +17,24 @@
     <p class="on-off">Todas las luces</p>
     <div class="botones">
         <div class="boton1">
-            <a type="button" class="boton material-symbols-outlined" href="/lights/all-on">light_mode</a>
-            <a type="button" class="boton material-symbols-outlined" href="/lights/all-off">dark_mode</a>
+            <a type="button" class="boton material-symbols-outlined">light_mode</a>
+            <a type="button" class="boton material-symbols-outlined">dark_mode</a>
         </div>
     </div>
     <br>
     <p class="on-off">Dispositivos</p>
     <div class="botones">
-        <!-- TODO: set icon color to style="color:#f4af36" when device is on -->
         <!-- sala de estar -->
-        <a type="button" class="boton material-symbols-outlined" href="/lights/sala-de-estar">chair</a>
+        <a type="button" onclick="sala()" id="5" class="boton material-symbols-outlined">chair</a>
 
         <!-- comedor -->
-        <a type="button" class="boton material-symbols-outlined" href="/lights/comedor">flatware</a>
+        <a type="button" onclick="comedor()" id="1" class="boton material-symbols-outlined">flatware</a>
 
         <!-- dormitorio -->
-        <a type="button" class="boton material-symbols-outlined" href="/lights/dormitorio">bed</a>
+        <a type="button" onclick="dormitorio()" id="3" class="boton material-symbols-outlined">bed</a>
     
         <!-- aspersores -->
-        <a type="button" class="boton material-symbols-outlined" href="/sprinklers">sprinkler</a>
+        <a type="button" class="boton material-symbols-outlined">sprinkler</a>
     </div>
 </body>
 </html>

@@ -72,13 +72,13 @@ today = Weather(
 comedor = Light(os.environ['HUE_USER'], os.environ['HUE_IP'], 1)
 sala_de_estar = Light(os.environ['HUE_USER'], os.environ['HUE_IP'], 5)
 dormitorio = Light(os.environ['HUE_USER'], os.environ['HUE_IP'], 3)
-sprinklers = Switch(os.environ['SPRINKLERS_IP'], os.environ['SPRINKLERS_PORT'])
+# sprinklers = Switch(os.environ['SPRINKLERS_IP'], os.environ['SPRINKLERS_PORT'])
 
 # Get states
 comedor_state = comedor.get_state()
 sala_de_estar_state = sala_de_estar.get_state()
 dormitorio_state = dormitorio.get_state()
-sprinklers_state = sprinklers.get_info()
+# sprinklers_state = sprinklers.get_info()
 
 # Main template rendering
 def render_main():
@@ -87,7 +87,7 @@ def render_main():
         comedor_state=comedor_state,
         sala_de_estar_state=sala_de_estar_state,
         dormitorio_state=dormitorio_state,
-        sprinklers_state=sprinklers_state
+        # sprinklers_state=sprinklers_state
     )
 
 @app.route('/')
@@ -123,19 +123,19 @@ def dormitorio_lights():
     dormitorio.flip_state()
     return render_main()
 
-@app.route("/sprinklers")
-def sprinklers_switch():
-    sprinklers.flip_state()
-    return render_main()
+# @app.route("/sprinklers")
+# def sprinklers_switch():
+#     sprinklers.flip_state()
+#     return render_main()
 
-# For scheduled execution only
-@app.route("/sprinklers/off")
-def sprinklers_off():
-    sprinklers.turn_off()
+# # For scheduled execution only
+# @app.route("/sprinklers/off")
+# def sprinklers_off():
+#     sprinklers.turn_off()
 
-# For scheduled execution only
-@app.route("/sprinklers/automatic")
-def sprinklers_automatic():
-    days = 1
-    if today.rain_forecast(days):
-        sprinklers.turn_on()
+# # For scheduled execution only
+# @app.route("/sprinklers/automatic")
+# def sprinklers_automatic():
+#     days = 1
+#     if today.rain_forecast(days):
+#         sprinklers.turn_on()
