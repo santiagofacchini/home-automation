@@ -112,6 +112,10 @@ def dormitorio_lights():
 def sprinklers_switch():
     return sprinklers.flip_state()
 
+@app.route("/sprinklers/get-state")
+def sprinklers_state():
+    return sprinklers.get_info()
+
 # For scheduled execution only
 @app.route("/sprinklers/off")
 def sprinklers_off():

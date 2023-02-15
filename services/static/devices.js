@@ -12,6 +12,29 @@ const sprinklers_port = '8081'
 const sprinklers_endpoint = 'http://192.168.88.109:4000/sprinklers'
 const sprinklers_id = '4'
 
+function get_all_states() {
+    ['1', '3', '5'].forEach(id => {
+        fetch('http://' + hue_ip + '/api/' + hue_user + '/lights/' + id)
+            .then((response) => response.json())
+            .then((data) => {
+                if (data['state']['on'] == true) {
+                    document.getElementById(id).style.setProperty("color", "#f4af36")
+                } else {
+                    document.getElementById(id).style.setProperty("color", "#898d95")
+                }
+            }) 
+        })
+    fetch("http://192.168.88.109:4000/sprinklers/get-state")
+        .then((response) => response.json())
+	.then((data) => {
+            if (data["data"]["switch"] == "on") {
+	        document.getElementById(sprinklers_id).style.setProperty("color", "#f4af36")
+	    } else {
+                document.getElementById(sprinklers_id).style.setProperty("color", "#898d95")
+	    }
+	})
+};
+
 function sala() {
     fetch('http://' + hue_ip + '/api/' + hue_user + '/lights/' + sala_id)
         .then((response) => response.json())
