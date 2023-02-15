@@ -71,9 +71,9 @@ function aspersores() {
         .then((response) => response.json())
         .then((data) => {
             if (data['data']['switch'] == 'off') {
-                document.getElementById(sprinklers_id).style.setProperty("color", "#f4af36")
+                document.getElementById(sprinklers_id).style.setProperty("color", "#898d95")
             } else {
-                 document.getElementById(sprinklers_id).style.setProperty("color", "#898d95")
+                 document.getElementById(sprinklers_id).style.setProperty("color", "#f4af36")
             }
          })
 };
