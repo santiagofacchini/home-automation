@@ -98,28 +98,28 @@ def all_off():
 
 @app.route("/lights/comedor")
 def comedor_lights():
-    return comedor.flip_state(), 200
+    return comedor.flip_state()
 
 @app.route("/lights/sala-de-estar")
 def sala_de_estar_lights():
-    return sala_de_estar.flip_state(), 200
+    return sala_de_estar.flip_state()
 
 @app.route("/lights/dormitorio")
 def dormitorio_lights():
-    return dormitorio.flip_state(), 200
+    return dormitorio.flip_state()
 
 @app.route("/sprinklers")
 def sprinklers_switch():
-    return sprinklers.flip_state(), 200
+    return sprinklers.flip_state()
 
 # For scheduled execution only
 @app.route("/sprinklers/off")
 def sprinklers_off():
-    return sprinklers.turn_off(), 200
+    return sprinklers.turn_off()
 
 # For scheduled execution only
 @app.route("/sprinklers/automatic")
 def sprinklers_automatic():
     days = 1
     if today.rain_forecast(days):
-        return sprinklers.turn_on(), 200
+        return sprinklers.turn_on()

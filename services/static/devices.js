@@ -27,8 +27,8 @@ function sala() {
                 Http.send()
                 console.log(Http.response)
             }
-        });
-}
+        })
+};
 
 function comedor() {
     fetch('http://' + hue_ip + '/api/' + hue_user + '/lights/' + comedor_id)
@@ -45,8 +45,8 @@ function comedor() {
                 Http.send()
                 console.log(Http.response)
             }
-        });
-}
+        })
+};
 
 function dormitorio() {
     fetch('http://' + hue_ip + '/api/' + hue_user + '/lights/' + dormitorio_id)
@@ -63,33 +63,17 @@ function dormitorio() {
                 Http.send()
                 console.log(Http.response)
             }
-        });
-}
-
-// function aspersores() {
-//     var payload = { data: "" }
-//     fetch('http://192.168.88.254:8081/zeroconf/info', {
-//         method:'POST',
-//         body: JSON.stringify(payload),
-//         mode: 'no-cors',
-//         headers: { 'Content-Type': 'application/json' }
-//      })
-//         .then((response) => response.json())
-//         .then((data) => {
-//             if (data['data']['switch'] == 'on') {
-//                 document.getElementById(sprinklers_id).style.setProperty("color", "#f4af36")
-//                 Http.open("GET", sprinklers_endpoint)
-//                 Http.send()
-//             } else {
-//                 document.getElementById(sprinklers_id).style.setProperty("color", "#898d95")
-//                 Http.open("GET", sprinklers_endpoint)
-//                 Http.send()
-//             }
-//         })
-// }
+        })
+};
 
 function aspersores() {
-    Http.open("GET", sprinklers_endpoint)
-    Http.send()
-    console.log(Http.response)
-}
+    fetch(sprinklers_endpoint)
+        .then((response) => response.json())
+        .then((data) => {
+            if (data['data']['switch'] == 'off') {
+                document.getElementById(sprinklers_id).style.setProperty("color", "#f4af36")
+            } else {
+                 document.getElementById(sprinklers_id).style.setProperty("color", "#898d95")
+            }
+         })
+};
