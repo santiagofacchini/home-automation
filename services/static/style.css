@@ -1,42 +1,28 @@
-.main {
+body {
     background-color: #18191c;
     color: #e2e4e9;
-    padding-left: 3%;
-    padding-right: 3%;
-}
-
-.casa {
-    padding-top: 15%;
-    padding-bottom: 15%;
     font-family: "Roboto", sans-serif;
     font-weight: bolder;
     text-align: center;
-    font-size: x-large;
+    padding: 1%;
 }
 
-div.botones {
-    display: flex;
+.main {
+    font-size: 24px;
+    justify-content: center;
+    padding: 5%;
 }
 
-div.boton1 {
-    margin: auto;
+.all-lights, .devices{
+    font-size: 16px;
+    padding: 5%;
+}
+
+.material-symbols-outlined {
     color: #898d95;
+    padding: 5%;
 }
 
 a:hover, a:focus, a:active {
     text-decoration: none;
-}
-
-a.boton {
-    text-decoration: none;
-    margin: auto;
-    color: #898d95;
-}
-
-p.on-off {
-    font-family: "Roboto", sans-serif;
-    font-weight: bolder;
-    text-align: center;
-    font-size: medium;
-    padding: 5%;
 }
