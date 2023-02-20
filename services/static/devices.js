@@ -16,7 +16,7 @@ function get_all_states() {
     ['1', '3', '5'].forEach(id => {
         fetch('http://' + hue_ip + '/api/' + hue_user + '/lights/' + id)
             .then((response) => response.json())
-            .then((data) => {
+            .finally((data) => {
                 if (data['state']['on'] == true) {
                     document.getElementById(id).style.setProperty("color", "#f4af36")
                 } else {
@@ -26,13 +26,13 @@ function get_all_states() {
         })
     fetch("http://192.168.88.109:4000/sprinklers/get-state")
         .then((response) => response.json())
-	.then((data) => {
+	    .then((data) => {
             if (data["data"]["switch"] == "on") {
-	        document.getElementById(sprinklers_id).style.setProperty("color", "#f4af36")
-	    } else {
+	            document.getElementById(sprinklers_id).style.setProperty("color", "#f4af36")
+	        } else {
                 document.getElementById(sprinklers_id).style.setProperty("color", "#898d95")
-	    }
-	})
+	        }
+	    })
 };
 
 function sala() {
@@ -105,12 +105,32 @@ function all_on() {
     Http.open("GET", "http://192.168.88.109:4000/lights/all-on")
     Http.send()
     console.log(Http.response)
-    get_all_states()
-}
+    ['1', '3', '5'].forEach(id => {
+        fetch('http://' + hue_ip + '/api/' + hue_user + '/lights/' + id)
+            .then((response) => response.json())
+            .finally((data) => {
+                if (data['state']['on'] == true) {
+                    document.getElementById(id).style.setProperty("color", "#898d95")
+                } else {
+                    document.getElementById(id).style.setProperty("color", "#f4af36")
+                }
+            }) 
+        })
+};
 
 function all_off() {
     Http.open("GET", "http://192.168.88.109:4000/lights/all-off")
     Http.send()
     console.log(Http.response)
-    get_all_states()
-}
+    ['1', '3', '5'].forEach(id => {
+        fetch('http://' + hue_ip + '/api/' + hue_user + '/lights/' + id)
+            .then((response) => response.json())
+            .finally((data) => {
+                if (data['state']['on'] == true) {
+                    document.getElementById(id).style.setProperty("color", "#898d95")
+                } else {
+                    document.getElementById(id).style.setProperty("color", "#f4af36")
+                }
+            }) 
+        })
+};
