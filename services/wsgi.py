@@ -74,27 +74,21 @@ sala_de_estar = Light(os.environ['HUE_USER'], os.environ['HUE_IP'], 5)
 dormitorio = Light(os.environ['HUE_USER'], os.environ['HUE_IP'], 3)
 sprinklers = Switch(os.environ['SPRINKLERS_IP'], os.environ['SPRINKLERS_PORT'])
 
-# Main template rendering
-def render_main():
-    return render_template('main.html')
-
 @app.route('/')
 def main():
-    return render_main()
+    return render_template('main.html')
 
 @app.route("/lights/all-on")
 def all_on():
     comedor.turn_on()
     sala_de_estar.turn_on()
     dormitorio.turn_on()
-    return render_main()
 
 @app.route("/lights/all-off")
 def all_off():
     comedor.turn_off()
     sala_de_estar.turn_off()
     dormitorio.turn_off()
-    return render_main()
 
 @app.route("/lights/comedor")
 def comedor_lights():

@@ -100,3 +100,17 @@ function aspersores() {
             }
          })
 };
+
+function all_on() {
+    Http.open("GET", "http://192.168.88.109:4000/lights/all-on")
+    Http.send()
+    console.log(Http.response)
+    get_all_states()
+}
+
+function all_off() {
+    Http.open("GET", "http://192.168.88.109:4000/lights/all-off")
+    Http.send()
+    console.log(Http.response)
+    get_all_states()
+}
