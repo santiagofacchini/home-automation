@@ -119,4 +119,5 @@ def sprinklers_off():
 @app.route("/sprinklers/automatic")
 def sprinklers_automatic():
     days = 1
-    return today.rain_forecast(days)
+    if today.rain_forecast(days):
+        return sprinklers.turn_on()
