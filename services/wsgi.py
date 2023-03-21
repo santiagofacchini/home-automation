@@ -80,11 +80,15 @@ def main():
 
 @app.route("/lights/all-on")
 def all_on():
-    return comedor.turn_on(), sala_de_estar.turn_on(), dormitorio.turn_on()
+    comedor.turn_on()
+    sala_de_estar.turn_on()
+    dormitorio.turn_on()
 
 @app.route("/lights/all-off")
 def all_off():
-    return comedor.turn_off(), sala_de_estar.turn_off(), dormitorio.turn_off()
+    comedor.turn_off()
+    sala_de_estar.turn_off()
+    dormitorio.turn_off()
 
 @app.route("/lights/comedor")
 def comedor_lights():

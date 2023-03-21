@@ -16,7 +16,7 @@ function get_all_states() {
     ['1', '3', '5'].forEach(id => {
         fetch('http://' + hue_ip + '/api/' + hue_user + '/lights/' + id)
             .then((response) => response.json())
-            .then((data) => {
+            .finally((data) => {
                 if (data['state']['on'] == true) {
                     document.getElementById(id).style.setProperty("color", "#f4af36")
                 } else {
@@ -108,7 +108,7 @@ function all_on() {
     ['1', '3', '5'].forEach(id => {
         fetch('http://' + hue_ip + '/api/' + hue_user + '/lights/' + id)
             .then((response) => response.json())
-            .then((data) => {
+            .finally((data) => {
                 if (data['state']['on'] == true) {
                     document.getElementById(id).style.setProperty("color", "#898d95")
                 } else {
@@ -125,7 +125,7 @@ function all_off() {
     ['1', '3', '5'].forEach(id => {
         fetch('http://' + hue_ip + '/api/' + hue_user + '/lights/' + id)
             .then((response) => response.json())
-            .then((data) => {
+            .finally((data) => {
                 if (data['state']['on'] == true) {
                     document.getElementById(id).style.setProperty("color", "#898d95")
                 } else {
